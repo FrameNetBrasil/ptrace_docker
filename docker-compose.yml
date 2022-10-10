@@ -1,0 +1,15 @@
+version: "3.3"
+services:
+    ptrace:
+        build:
+            context: .
+        container_name: 'fnbr-server-$PROJECT_NAME'
+        restart: unless-stopped
+        environment:
+            - TRACE_HOST
+            - TRACE_PORT
+        volumes:
+            - .:/home
+        ports:
+            - "${WS_PORT}:9998"
+            - "${TRACE_PORT}:9999"
