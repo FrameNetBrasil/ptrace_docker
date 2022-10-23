@@ -12,8 +12,16 @@ $socket->on('connection', function (React\Socket\ConnectionInterface $connection
     print_r("Hello " . $connection->getRemoteAddress() . "!\n");
 
     $connection->on('data', function ($data) use ($connection, $ws) {
-        print_r( $data . "\n");
-        $ws->send(substr($data,14));
+        print_r( "-- received -- " . $data . "\n");
+        $lines = explode("<record_start>", $data);
+        foreach($lines as $line) {
+            print_r($line . PHP_EOL);
+            if (trim($line != '')) {
+                $ws->send(trim($line));
+            }
+            //$this->ws->receive();
+        }
+//        $ws->send(substr($data,14));
     });
 
     $connection->on('end', function () {

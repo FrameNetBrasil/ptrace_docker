@@ -20,8 +20,13 @@ class Trace implements MessageComponentInterface {
     }
 
     public function onMessage(ConnectionInterface $from, $msg) {
-        $this->ws->send(substr($msg,14));
-        $this->ws->receive();
+        print_r($msg . PHP_EOL);
+        $lines = explode("<record_start>", $msg);
+        foreach($lines as $line) {
+            print_r($line . PHP_EOL);
+            $this->ws->send($line);
+            $this->ws->receive();
+        }
     }
 
     public function onClose(ConnectionInterface $conn) {
