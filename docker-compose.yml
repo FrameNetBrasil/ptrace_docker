@@ -3,7 +3,6 @@ services:
     ptrace:
         build:
             context: .
-        container_name: 'fnbr-server-$PROJECT_NAME'
         restart: unless-stopped
         environment:
             - TRACE_HOST
