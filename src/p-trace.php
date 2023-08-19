@@ -1,11 +1,11 @@
 <?php
 
-use App\Pusher;
 use Ratchet\Server\IoServer;
 use Ratchet\Http\HttpServer;
 use Ratchet\WebSocket\WsServer;
 
-require dirname(__DIR__) . '/vendor/autoload.php';
+require '/home/vendor/autoload.php';
+require 'Pusher.php';
 
 $loop = React\EventLoop\Factory::create();
 $pusher = new Pusher();

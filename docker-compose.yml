@@ -10,5 +10,5 @@ services:
         volumes:
             - .:/home
         ports:
-            - "${WS_PORT}:9998"
-            - "${TRACE_PORT}:9999"
+            - ${WS_PORT}:9998
+            - ${TRACE_PORT}:9999
